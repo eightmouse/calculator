@@ -41,10 +41,12 @@ for (let key of keys) {
             }
 
             display_input.innerHTML = cleanInput(input);
-            
+
         } else {
-            input += value;
-            display_input.innerHTML = cleanInput(input);
+            if(validateInput(value)) {
+                input += value;
+                display_input.innerHTML = cleanInput(input); 
+            }
         }
     })
 }
@@ -94,4 +96,21 @@ function cleanOutput(output) {
     }
 
     return output_array.join("");
+}
+
+//This function validates the input
+function validateInput(value) {
+    let last_input = input.slice(-1);
+    let operators = ["+", "-", "*", "/"];
+    if(value == "." && last_input == ".") {
+        return false;
+    }
+    if(operators.includes(value)) {
+        if(operators.includes(last_input)) {
+            return false
+        } else {
+            return true;
+        }
+    }    
+    return true;
 }
