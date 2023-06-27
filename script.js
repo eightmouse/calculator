@@ -1,4 +1,4 @@
-const keys = document.querySelectorAll('.keys');
+const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
 
@@ -12,6 +12,42 @@ for (let key of keys) {
             display_output.innerHTML = "";    
         } else if( value == "backspace") {
             input = input.slice(0, -1);
+            display_input.innerHTML = input;
+        } else if (value == "=") {
+            let result = eval(input);
+            display_output.innerHTML = result;
+        } else if (value == "brackets") {
+            if (
+                input.indexOf("(") == -1 || 
+                input.indexOf("(") != -1 && 
+                input.indexOf (")") != -1 && 
+                input.lastIndexOf ("(") < input.lastIndexOf (")")
+            ) {
+                input += "(";
+            } else if (
+                input.indexOf("(") != -1 && 
+                input.indexOf(")") == -1 ||
+                input.indexOf("(") != -1 &&
+                input.indexOf(")") != -1 &&
+                input.lastIndexOf("(") > input.lastIndexOf(")")
+            ) {
+                input += ")"
+            }
+
+            display_input.innerHTML = input;
+            
+        } else {
+            input += value;
+            display_input.innerHTML = input;
         }
     })
+}
+
+function cleanInput(input) {
+    let input_array = input.split("");
+    let input_array_lenght = input_array.lenght;
+
+    for( let i = 0; 1 < input_array_lenght; i++) {
+        
+    }
 }
