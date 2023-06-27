@@ -8,3 +8,4 @@ the only damage one can possibly do is numbers (I do understand that I'm probabl
 However, I won't rely on it or use it for future projects!
 
 ## Live site
+https://eightmouse.github.io/calculator/
